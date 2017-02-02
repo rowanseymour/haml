@@ -253,9 +253,9 @@ HAML
     $global_var_for_testing = 'World'
 
     assert_equal("<p>Hello World</p>\n", render('%p Hello #$global_var_for_testing', escape_html: false))
-    assert_equal("<p>\n  Hello World\n</p>\n", render("%p\n  Hello \#$global_var_for_testing", escape_html: false))
+    assert_equal("<p>\nHello World\n</p>\n", render("%p\n  Hello \#$global_var_for_testing", escape_html: false))
     assert_equal("<p>Hello World</p>\n", render('%p Hello #$global_var_for_testing', escape_html: true))
-    assert_equal("<p>\n  Hello World\n</p>\n", render("%p\n  Hello \#$global_var_for_testing", escape_html: true))
+    assert_equal("<p>\nHello World\n</p>\n", render("%p\n  Hello \#$global_var_for_testing", escape_html: true))
   ensure
     $global_var_for_testing = nil
   end
@@ -536,7 +536,7 @@ HAML
   def test_both_case_indentation_work_with_deeply_nested_code
     result = <<RESULT
 <h2>
-  other
+other
 </h2>
 RESULT
     assert_equal(result, render(<<HAML))
@@ -602,8 +602,8 @@ HAML
   def test_nested_end_with_method_call
     assert_equal(<<HTML, render(<<HAML))
 <p>
-  2|3|4
-  b-a-r
+2|3|4
+b-a-r
 </p>
 HTML
 %p

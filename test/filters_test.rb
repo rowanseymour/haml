@@ -76,7 +76,7 @@ class FiltersTest < Haml::TestCase
     assert_equal("\n", render(':plain'))
   end
 
-  test "should be compatible with ugly mode" do
+  test ":plain with content" do
     expectation = "foo\n"
     assert_equal(expectation, render(":plain\n  foo"))
   end
