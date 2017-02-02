@@ -33,7 +33,6 @@ module Haml
 end
 
 
-Haml::Template.options[:ugly] = defined?(Rails.env) ? !Rails.env.development? : true
 Haml::Template.options[:escape_html] = true
 
 require 'haml/template/plugin'
