@@ -346,7 +346,7 @@ HAML
   end
 
   def test_ugly_semi_prerendered_tags
-    assert_equal(<<HTML, render(<<HAML, :ugly => true))
+    assert_equal(<<HTML, render(<<HAML))
 <p a='2'></p>
 <p a='2'>foo</p>
 <p a='2'>
@@ -560,14 +560,14 @@ HAML
   end
 
   def test_equals_block_with_ugly
-    assert_equal("foo\n", render(<<HAML, :ugly => true))
+    assert_equal("foo\n", render(<<HAML))
 = capture_haml do
   foo
 HAML
   end
 
   def test_plain_equals_with_ugly
-    assert_equal("foo\nbar\n", render(<<HAML, :ugly => true))
+    assert_equal("foo\nbar\n", render(<<HAML))
 = "foo"
 bar
 HAML
@@ -1418,13 +1418,13 @@ HAML
 
   def test_ugly_true
     assert_equal("<div id='outer'>\n<div id='inner'>\n<p>hello world</p>\n</div>\n</div>\n",
-                 render("#outer\n  #inner\n    %p hello world", :ugly => true))
+                 render("#outer\n  #inner\n    %p hello world"))
 
     assert_equal("<p>#{'s' * 75}</p>\n",
-                 render("%p #{'s' * 75}", :ugly => true))
+                 render("%p #{'s' * 75}"))
 
     assert_equal("<p>#{'s' * 75}</p>\n",
-                 render("%p= 's' * 75", :ugly => true))
+                 render("%p= 's' * 75"))
   end
 
   def test_remove_whitespace_true
@@ -1444,8 +1444,8 @@ HAML
   def test_auto_preserve_unless_ugly
     assert_equal("<pre>foo&#x000A;bar</pre>\n", render('%pre="foo\nbar"'))
     assert_equal("<pre>foo\nbar</pre>\n", render("%pre\n  foo\n  bar"))
-    assert_equal("<pre>foo\nbar</pre>\n", render('%pre="foo\nbar"', :ugly => true))
-    assert_equal("<pre>foo\nbar</pre>\n", render("%pre\n  foo\n  bar", :ugly => true))
+    assert_equal("<pre>foo\nbar</pre>\n", render('%pre="foo\nbar"'))
+    assert_equal("<pre>foo\nbar</pre>\n", render("%pre\n  foo\n  bar"))
   end
 
   def test_xhtml_output_option
